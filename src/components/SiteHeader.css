@@ -1,0 +1,248 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(250, 248, 244, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header__bar {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.site-header__logo img {
+  height: 34px;
+  width: auto;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navlink {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.navlink:hover,
+.navlink[aria-current='page'] {
+  color: var(--signal-deep);
+}
+
+.chev {
+  transition: transform 0.15s ease;
+}
+
+.chev--open {
+  transform: rotate(180deg);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 2px solid var(--logo-red);
+  flex: none;
+}
+
+/* Industries dropdown */
+.dd {
+  position: relative;
+}
+
+.dd__toggle {
+  font: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dd__toggle:hover {
+  color: var(--signal-deep);
+}
+
+.dd__menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: -20px;
+  width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 24px 48px -20px rgba(22, 19, 15, 0.28);
+  display: flex;
+  flex-direction: column;
+}
+
+.dd__menu[hidden] {
+  display: none;
+}
+
+/* Bridge the gap so hover doesn't drop between button and menu */
+.dd__menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -12px;
+  height: 12px;
+}
+
+.dd__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.dd__item:hover,
+.dd__item[aria-current='page'] {
+  color: var(--signal-deep);
+  background: var(--paper);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Mobile menu panel */
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu__row {
+  font: inherit;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line-soft);
+  padding: 16px 0;
+  text-align: left;
+}
+
+.mobile-menu__row:last-child {
+  border-bottom: 0;
+}
+
+.mobile-menu__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.mobile-menu__sub {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0 10px 4px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.mobile-menu__sub[hidden] {
+  display: none;
+}
+
+.mobile-menu__subitem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  font-size: 17px;
+}
+
+@media (max-width: 1023px) {
+  .site-header__nav {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Nothing is fixed or sticky on mobile */
+  .site-header {
+    position: static;
+  }
+
+  .site-header__bar {
+    gap: 12px;
+  }
+
+  .site-header__nav {
+    display: none;
+  }
+
+  .site-header__cta {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding: 8px 20px 20px;
+  }
+
+  .mobile-menu[hidden] {
+    display: none;
+  }
+}
+
+@media (max-width: 359px) {
+  .site-header__logo img {
+    height: 28px;
+  }
+}

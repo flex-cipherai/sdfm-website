@@ -1,0 +1,49 @@
+.help-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.help-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--signal-tint);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--signal-tint-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--signal);
+}
+
+.help-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 8px 0 0;
+}
+
+.help-card__body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--body);
+  flex: 1;
+}
+
+@media (max-width: 767px) {
+  .help-card {
+    padding: 24px;
+  }
+  .help-card__title {
+    font-size: 20px;
+  }
+}

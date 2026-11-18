@@ -1,0 +1,29 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# 301s from the old site (see Structure & Copy doc, "Redirects").
+# Remove the /case-summaries rule once case examples are rewritten.
+[[redirects]]
+  from = "/industry-solutions"
+  to = "/#industries"
+  status = 301
+
+[[redirects]]
+  from = "/case-summaries"
+  to = "/"
+  status = 301
+
+# Single-page app: let React Router handle every other path.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

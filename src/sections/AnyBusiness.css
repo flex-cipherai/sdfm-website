@@ -1,0 +1,21 @@
+.any-business {
+  background: var(--sand);
+  border-top: 1px solid var(--line);
+  padding: 36px 0;
+}
+
+.any-business__text {
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+.any-business__sep {
+  color: #a39b90;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

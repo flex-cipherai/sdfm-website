@@ -1,0 +1,37 @@
+.placeholder {
+  min-height: 56vh;
+}
+
+.placeholder__label {
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-deep);
+}
+
+.placeholder__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.placeholder__text {
+  margin: 20px 0 0;
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.placeholder__links {
+  margin: 32px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+}

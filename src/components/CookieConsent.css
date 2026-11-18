@@ -1,0 +1,80 @@
+/* Desktop: card in the bottom-left corner. Mobile: in the page flow at the
+   top, because nothing floats on mobile. */
+.cookie {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 40;
+  max-width: 440px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 48px -20px rgba(22, 19, 15, 0.3);
+  padding: 20px 22px;
+}
+
+.cookie:focus {
+  outline: none;
+}
+
+.cookie__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--body);
+}
+
+.cookie__current {
+  color: var(--muted);
+}
+
+.cookie__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cookie__btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.cookie__btn--ghost {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.cookie__btn--ghost:hover {
+  background: var(--paper);
+}
+
+.cookie__btn--primary {
+  background: var(--signal);
+  color: #fff;
+  border: 0;
+}
+
+.cookie__btn--primary:hover {
+  background: var(--signal-deep);
+}
+
+@media (max-width: 767px) {
+  .cookie {
+    position: static;
+    max-width: none;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    box-shadow: none;
+    padding: 16px 20px;
+  }
+  .cookie__btn {
+    flex: 1;
+  }
+}

@@ -1,0 +1,22 @@
+.guides__intro {
+  margin: 14px 0 48px;
+  font-size: 18px;
+  color: var(--body);
+}
+
+.guides__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.guides__all {
+  margin: 36px 0 0;
+  font-size: 16px;
+}
+
+@media (max-width: 899px) {
+  .guides__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

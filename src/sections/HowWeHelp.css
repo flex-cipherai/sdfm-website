@@ -1,0 +1,42 @@
+.how {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.how__title {
+  margin-bottom: 56px;
+  max-width: 720px;
+}
+
+.how__body {
+  position: relative;
+}
+
+/* Dashed line joining the three icons */
+.how__line {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  top: 60px;
+  border-top: 2px dashed var(--line);
+}
+
+.how__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 899px) {
+  .how__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .how__title {
+    margin-bottom: 36px;
+  }
+}

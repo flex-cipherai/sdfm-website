@@ -1,0 +1,70 @@
+.gcard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.gcard:hover {
+  color: inherit;
+  border-color: var(--signal);
+  box-shadow: 0 18px 40px -24px rgba(22, 19, 15, 0.3);
+}
+
+.gcard__tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal-deep);
+  background: var(--signal-tint);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.gcard__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 4px 0 0;
+}
+
+.gcard__excerpt {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--body);
+  flex: 1;
+}
+
+.gcard__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.gcard__read {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.gcard__arrow {
+  color: var(--signal);
+}
