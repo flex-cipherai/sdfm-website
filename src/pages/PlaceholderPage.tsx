@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { usePageMeta } from '../hooks/usePageMeta';
 import './PlaceholderPage.css';
 
 /** Temporary page for routes the homepage links to but that aren't built yet. */
 export default function PlaceholderPage({ title }: { title: string }) {
-  usePageMeta(title, { noindex: true });
+  usePageMeta({ title, path: useLocation().pathname, noindex: true });
 
   return (
     <section className="sec placeholder">

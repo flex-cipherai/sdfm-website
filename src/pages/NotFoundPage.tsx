@@ -3,7 +3,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 import './PlaceholderPage.css';
 
 export default function NotFoundPage() {
-  usePageMeta('Page not found', { noindex: true });
+  usePageMeta({ title: 'Page not found', noindex: true });
 
   return (
     <section className="sec placeholder">

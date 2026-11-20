@@ -1,21 +1,79 @@
 import { useEffect } from 'react';
+import { site } from '../config/site';
 
-const DEFAULT_TITLE = 'AI for Law Firms, Podcasters, Agencies & HR Teams | SDFM Group';
+const DEFAULTS = {
+  title: 'AI for Law Firms, Podcasters, Agencies & HR Teams | SDFM Group',
+  description:
+    'Guides on AI in your industry, software built for law firms, podcasters, marketing agencies and HR teams, and custom builds live in 2 weeks.',
+  ogImage: '/og-image.jpg',
+};
 
-/** Sets the document title, and optionally hides the page from search engines. */
-export function usePageMeta(title?: string, { noindex = false } = {}) {
+interface PageMeta {
+  /** Short title; " | SDFM Group" is appended. Ignored when fullTitle is set. */
+  title?: string;
+  fullTitle?: string;
+  description?: string;
+  /** Path for the canonical and og:url, e.g. '/law-firms' */
+  path?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  /** JSON-LD objects to add as structured data */
+  jsonLd?: object[];
+}
+
+function setMeta(attr: 'name' | 'property', key: string, content: string) {
+  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.content = content;
+}
+
+function setCanonical(href: string) {
+  let el = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  if (!el) {
+    el = document.createElement('link');
+    el.rel = 'canonical';
+    document.head.appendChild(el);
+  }
+  el.href = href;
+}
+
+/** Sets title, description, canonical, og tags and structured data for a page. */
+export function usePageMeta({ title, fullTitle, description, path = '/', ogImage, noindex = false, jsonLd }: PageMeta = {}) {
+  const ld = jsonLd ? JSON.stringify(jsonLd) : '';
+
   useEffect(() => {
-    document.title = title ? `${title} | SDFM Group` : DEFAULT_TITLE;
+    const t = fullTitle ?? (title ? `${title} | SDFM Group` : DEFAULTS.title);
+    const d = description ?? DEFAULTS.description;
+    const url = `${site.url}${path === '/' ? '/' : path}`;
 
-    let robots: HTMLMetaElement | null = null;
+    document.title = t;
+    setMeta('name', 'description', d);
+    setMeta('property', 'og:title', t);
+    setMeta('property', 'og:description', d);
+    setMeta('property', 'og:url', url);
+    setMeta('property', 'og:image', `${site.url}${ogImage ?? DEFAULTS.ogImage}`);
+    setCanonical(url);
+
+    const added: HTMLElement[] = [];
     if (noindex) {
-      robots = document.createElement('meta');
+      const robots = document.createElement('meta');
       robots.name = 'robots';
       robots.content = 'noindex';
-      document.head.appendChild(robots);
+      added.push(robots);
     }
-    return () => {
-      robots?.remove();
-    };
-  }, [title, noindex]);
+    if (ld) {
+      for (const obj of JSON.parse(ld) as object[]) {
+        const s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.textContent = JSON.stringify(obj);
+        added.push(s);
+      }
+    }
+    added.forEach((el) => document.head.appendChild(el));
+    return () => added.forEach((el) => el.remove());
+  }, [title, fullTitle, description, path, ogImage, noindex, ld]);
 }

@@ -4,6 +4,8 @@ interface SiteConfig {
   name: string;
   url: string;
   tagline: string;
+  /** Promised reply time, shown after a custom-build request */
+  replyTime: string;
   contact: { email: string; whatsapp: string; phone: string };
   social: { linkedin: string; instagram: string };
 }
@@ -12,6 +14,8 @@ export const site: SiteConfig = {
   name: 'SDFM Group Limited',
   url: 'https://sdfmgroup.com',
   tagline: 'AI for law firms, podcasters, marketing agencies and HR teams.',
+  // Placeholder from the spec; set the real reply time before launch.
+  replyTime: '1 business day',
   contact: {
     email: 'flex@sdfmgroup.com',
     // International format, digits only, e.g. '254712345678'. Used for wa.me.

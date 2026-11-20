@@ -3,10 +3,14 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import PlaceholderPage from './pages/PlaceholderPage';
 import NotFoundPage from './pages/NotFoundPage';
+import IndustryPage from './pages/IndustryPage';
+import { lawFirms } from './data/industryPages';
+
+// Industry pages built so far; each is the IndustryPage template plus a config.
+const industryPages = [lawFirms];
 
 // Pages the homepage links to. Each shows a "coming soon" page until built.
 const plannedPages = [
-  { path: '/law-firms', title: 'AI for law firms' },
   { path: '/podcasters', title: 'AI for podcasters' },
   { path: '/marketing-agencies', title: 'AI for marketing agencies' },
   { path: '/hr-teams', title: 'AI for HR teams' },
@@ -23,6 +27,9 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
+        {industryPages.map((c) => (
+          <Route key={c.slug} path={`/${c.slug}`} element={<IndustryPage config={c} />} />
+        ))}
         {plannedPages.map((p) => (
           <Route key={p.path} path={p.path} element={<PlaceholderPage title={p.title} />} />
         ))}

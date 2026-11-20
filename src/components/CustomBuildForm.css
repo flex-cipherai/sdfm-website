@@ -1,0 +1,40 @@
+.build-form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 48px -32px rgba(22, 19, 15, 0.25);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.build-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.build-form__submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.build-form--sent {
+  padding: 40px 32px;
+}
+
+@media (max-width: 599px) {
+  .build-form {
+    padding: 22px 18px;
+  }
+  .build-form__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .build-form__submit .form-btn {
+    width: 100%;
+  }
+}

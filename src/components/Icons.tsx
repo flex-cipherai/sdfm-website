@@ -70,7 +70,42 @@ export const WrenchIcon = ({ size = 26, ...p }: IconProps) => (
   </svg>
 );
 
-export const LinkedInIcon = ({ size = 18, ...p }: IconProps) => (
+export const ArrowDown = ({ size = 18, ...p }: IconProps) => (
+  <svg {...base(size, { strokeWidth: 2.2, ...p })}>
+    <path d="M12 5v14M6 13l6 6 6-6" />
+  </svg>
+);
+
+export const CheckIcon = ({ size = 18, ...p }: IconProps) => (
+  <svg {...base(size, { strokeWidth: 2.2, ...p })}>
+    <path d="M5 12.5l4.5 4.5L19 7.5" />
+  </svg>
+);
+
+export const PlusIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size, { strokeWidth: 2, ...p })}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+export const RepairIcon = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size, { strokeWidth: 1.8, ...p })}>
+    <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8" />
+    <path d="M21 3v5h-5" />
+    <path d="M21 12a9 9 0 0 1-15.5 6.2L3 16" />
+    <path d="M3 21v-5h5" />
+  </svg>
+);
+
+export const QuoteIcon = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size, { strokeWidth: 1.8, ...p })}>
+    <path d="M6 3h9l4 4v14H6z" />
+    <path d="M14 3v5h5" />
+    <path d="M9 13h6M9 17h4" />
+  </svg>
+);
+
+export const LinkedInIcon =({ size = 18, ...p }: IconProps) => (
   <svg {...base(size, { strokeWidth: 1.8, ...p })}>
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect x="2" y="9" width="4" height="12" />

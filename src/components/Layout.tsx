@@ -7,8 +7,9 @@ import { pushEvent } from '../lib/tracking';
 
 /** Scroll to #hash targets (e.g. /#industries), otherwise to the top on page change. */
 function useScrollOnNavigate() {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
 
+  // `key` changes on every navigation, so clicking the same #link twice still scrolls
   useEffect(() => {
     if (hash) {
       const el = document.getElementById(decodeURIComponent(hash.slice(1)));
@@ -18,7 +19,7 @@ function useScrollOnNavigate() {
       }
     }
     window.scrollTo(0, 0);
-  }, [pathname, hash]);
+  }, [pathname, hash, key]);
 
   // Virtual page views for GTM (single-page app)
   useEffect(() => {

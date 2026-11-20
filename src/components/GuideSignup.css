@@ -1,0 +1,59 @@
+.signup {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 24px 48px;
+  align-items: center;
+}
+
+.signup__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.signup__form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+
+/* Line the button up with the input, below the label */
+.signup__btn {
+  margin-top: 31px;
+  height: 50px;
+}
+
+.signup__full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 899px) {
+  .signup {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .signup {
+    padding: 24px 20px;
+  }
+  .signup__title {
+    font-size: 21px;
+  }
+  .signup__form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .signup__btn {
+    margin-top: 0;
+    width: 100%;
+  }
+}

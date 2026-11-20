@@ -9,11 +9,13 @@ export interface GuideCardProps {
   readTime: string;
   href: string;
   slug: string;
+  /** Industry key added to the click_guide event on industry pages */
+  trackIndustry?: string;
 }
 
-export default function GuideCard({ industry, title, excerpt, readTime, href, slug }: GuideCardProps) {
+export default function GuideCard({ industry, title, excerpt, readTime, href, slug, trackIndustry }: GuideCardProps) {
   return (
-    <Link to={href} className="gcard" data-event="click_guide" data-slug={slug}>
+    <Link to={href} className="gcard" data-event="click_guide" data-slug={slug} data-industry={trackIndustry}>
       <span className="gcard__tag">{industry}</span>
       <h3 className="gcard__title">{title}</h3>
       <p className="gcard__excerpt">{excerpt}</p>

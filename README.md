@@ -26,6 +26,21 @@ src/
 
 `IndustryTile` and `AiCheckBand` are built to be reused on the industry pages.
 
+## Industry pages
+
+`/law-firms` (and later `/podcasters`, `/marketing-agencies`, `/hr-teams`) is
+the `IndustryPage` template in `src/pages/IndustryPage.tsx` fed a config from
+`src/data/industryPages.ts`. A new industry page is a new config plus one
+entry in `industryPages` in `src/App.tsx`; no layout changes.
+
+- Products: add an entry to `src/data/products.ts`. Each page lists published
+  products for its industry (Live first, then Early access, then `order`).
+  With none, it shows the "Request a custom build" card.
+- Guides: up to 6 latest for the industry; with none, only the sign-up shows.
+- Forms (`CustomBuildForm`, `GuideSignup`) send through `submitForm` in
+  `src/lib/forms.ts`. Set `VITE_FORM_ENDPOINT` to connect them; until then
+  they validate and show the success message but nothing is sent.
+
 ## Tracking
 
 Every tracked link carries `data-event` plus one property (`data-industry`,
@@ -37,9 +52,15 @@ pushes them to `window.dataLayer`:
 | `click_industry_tile` | `industry`: law, podcast, marketing, hr           |
 | `click_ai_check`      | `location`: header, hero, band, any_business      |
 | `click_custom_builds` | `location`: how_we_help, any_business             |
-| `click_guide`         | `slug`: the guide's slug, or `all`                |
+| `click_guide`         | `slug`: the guide's slug, or `all` (+ `industry` on industry pages) |
+| `click_jump_link`     | `target`: learn, software, get_it_built           |
+| `click_product_cta`   | `industry`, `product` (product id)                |
+| `click_request_build` | `location`: software                              |
+| `submit_custom_build` | `industry`, `firm_size` (pushed on form success)  |
+| `submit_guide_signup` | `industry` (pushed on form success)               |
 
-A `page_view` event is also pushed on every route change.
+`click_ai_check` also carries `industry` on industry pages. A `page_view`
+event is pushed on every route change.
 
 Set `VITE_GTM_ID` (see `.env.example`) in Netlify's environment variables to
 load Google Tag Manager. Consent Mode v2 defaults to denied until the visitor

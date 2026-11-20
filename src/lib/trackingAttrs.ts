@@ -1,7 +1,16 @@
 // The data attributes a tracked link carries (see lib/tracking.ts).
 export type TrackingAttrs = {
-  'data-event': 'click_industry_tile' | 'click_ai_check' | 'click_custom_builds' | 'click_guide';
+  'data-event':
+    | 'click_industry_tile'
+    | 'click_ai_check'
+    | 'click_custom_builds'
+    | 'click_guide'
+    | 'click_jump_link'
+    | 'click_product_cta'
+    | 'click_request_build';
   'data-industry'?: string;
   'data-location'?: string;
   'data-slug'?: string;
+  'data-target'?: string;
+  'data-product'?: string;
 };

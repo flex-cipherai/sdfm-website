@@ -1,5 +1,6 @@
-// Click tracking. Every tracked link carries data-event plus one property
-// (data-industry / data-location / data-slug). A single document listener
+// Click tracking. Every tracked link carries data-event plus its properties
+// (data-industry / data-location / data-slug / data-target / data-product).
+// A single document listener
 // turns those clicks into Google Tag Manager dataLayer events.
 
 type DataLayerEvent = Record<string, unknown>;
@@ -10,7 +11,7 @@ declare global {
   }
 }
 
-const TRACKED_PROPS = ['industry', 'location', 'slug'] as const;
+const TRACKED_PROPS = ['industry', 'location', 'slug', 'target', 'product'] as const;
 
 export function pushEvent(payload: DataLayerEvent) {
   window.dataLayer = window.dataLayer || [];
