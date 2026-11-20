@@ -7,13 +7,13 @@ import { CheckIcon } from './Icons';
 import '../styles/forms.css';
 import './CustomBuildForm.css';
 
-export const ORG_SIZES = ['1–5', '6–15', '16–50', '51–100', 'More than 100'];
-
 export interface CustomBuildFormProps {
   /** Industry key for hidden fields and tracking, e.g. 'law' */
   industry: string;
   orgLabel: string;
   orgSizeLabel: string;
+  /** Choices for the size select, e.g. ['Just me', '2–5', ...] */
+  orgSizeOptions: string[];
   taskPlaceholder: string;
   toolsLabel: string;
   toolsPlaceholder: string;
@@ -39,7 +39,7 @@ function validate(f: Fields): Errors {
 
 /** Custom-build request form. Reused on every industry page and on /custom-builds. */
 export default function CustomBuildForm(props: CustomBuildFormProps) {
-  const { industry, orgLabel, orgSizeLabel, taskPlaceholder, toolsLabel, toolsPlaceholder } = props;
+  const { industry, orgLabel, orgSizeLabel, orgSizeOptions, taskPlaceholder, toolsLabel, toolsPlaceholder } = props;
   const id = useId();
   const { pathname } = useLocation();
   const [fields, setFields] = useState<Fields>(empty);
@@ -150,7 +150,7 @@ export default function CustomBuildForm(props: CustomBuildFormProps) {
             <option value="" disabled>
               Choose one
             </option>
-            {ORG_SIZES.map((s) => (
+            {orgSizeOptions.map((s) => (
               <option key={s} value={s}>
                 {s}
               </option>

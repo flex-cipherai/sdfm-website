@@ -92,17 +92,24 @@ export default function IndustryPage({ config: c }: { config: IndustryPageConfig
               </Link>
             </p>
           </div>
-          <img
-            className="ind-hero__img"
-            src={c.heroImage.src}
-            srcSet={`${c.heroImage.srcSmall} 800w, ${c.heroImage.src} 1600w`}
-            sizes="(max-width: 899px) 100vw, 560px"
-            width={1600}
-            height={1200}
-            alt={c.heroImage.alt}
-            // React 18 only passes the lowercase attribute through
-            {...{ fetchpriority: 'high' }}
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet={`${c.heroImage.webpSmall} 800w, ${c.heroImage.webp} 1600w`}
+              sizes="(max-width: 899px) 100vw, 560px"
+            />
+            <img
+              className="ind-hero__img"
+              src={c.heroImage.jpg}
+              srcSet={`${c.heroImage.jpgSmall} 800w, ${c.heroImage.jpg} 1600w`}
+              sizes="(max-width: 899px) 100vw, 560px"
+              width={1600}
+              height={1200}
+              alt={c.heroImage.alt}
+              // React 18 only passes the lowercase attribute through
+              {...{ fetchpriority: 'high' }}
+            />
+          </picture>
         </div>
       </section>
 
@@ -129,7 +136,7 @@ export default function IndustryPage({ config: c }: { config: IndustryPageConfig
               </div>
               <p className="ind-after">
                 <Link to={`/guides/${c.slug}`} className="ulink" data-event="click_guide" data-slug="all" data-industry={key}>
-                  All {c.navLabel.toLowerCase()} guides →
+                  {c.guidesLinkLabel} →
                 </Link>
               </p>
             </>
@@ -184,6 +191,7 @@ export default function IndustryPage({ config: c }: { config: IndustryPageConfig
             industry={key}
             orgLabel={c.orgLabel}
             orgSizeLabel={c.orgSizeLabel}
+            orgSizeOptions={c.orgSizeOptions}
             taskPlaceholder={c.taskPlaceholder}
             toolsLabel={c.toolsLabel}
             toolsPlaceholder={c.toolsPlaceholder}
